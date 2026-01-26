@@ -2,8 +2,17 @@
 
 const { useState } = require("react");
 
-const Multi = () => {
+export const Multi = () => {
   const [firstName, setFirsName] = useState("");
+
+  const onChangeFirstName = (e) => {
+    setFirsName(e.target.value);
+  };
+
+  const onSubmit = () => {
+    console.log(firstName);
+  };
+
   return (
     <div>
       <Input
@@ -18,6 +27,25 @@ const Multi = () => {
   );
 };
 
+const Input = (props) => {
+  const { type = "text", value, onChange, name, label, error, require } = props;
+
+  return (
+    <div className="flex flex-col items-center">
+      <div className="flex">
+        <label className="">{label}</label>
+      </div>
+      <input
+        className="border"
+        type={type}
+        value={value}
+        name={name}
+        onChange={onChange}
+      />
+      <p>{error}</p>
+    </div>
+  );
+};
 // import { useState } from "react";
 // import { Continue } from "./Continue";
 // import { FirstName } from "./FirstName";
