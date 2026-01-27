@@ -1,100 +1,87 @@
 "use client";
 
 import { useState } from "react";
+import { FormUserInfo } from "./FormUserInfo";
+import { FormEmailPassport } from "./FormEmailPassport";
 
-// import { useState } from "react";
+export const Form = () => {
+  const [step, setStep] = useState(1);
 
-// export const Form = () => {
-//   const [formData, setFormData] = useState({
-//     firstName: "",
-//     lastName: "",
-//     userName: "",
-//   });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    eMail: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-//   const [formError, setFormError] = useState({
-//     firstName: "",
-//     lastName: "",
-//     userName: "",
-//   });
+  const [formError, setFormError] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    eMail: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-//   const onChange = (event) => {
-//     const { name, value } = event.target;
+  const onChange = (event) => {
+    const { name, value } = event.target;
 
-//     const newFormData = { ...formData, [name]: value };
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+    updateFormError({ [name]: "" });
+  };
 
-//     setFormData(newFormData);
-//   };
+  const updateFormError = (error) => {
+    setFormError({ ...formError, ...error });
+  };
 
-//   const onSubmit = () => {
-//     if (formData.firstName === "") {
-//       setFormError((prev) => ({
-//         ...prev,
-//         firstName: "hooson bj bolohgui",
-//       }));
-//     } else {
-//       setFormError((prev) => ({
-//         ...prev,
-//         firstName: "",
-//       }));
-//     }
-//     if (formData.lastName === "") {
-//       setFormError((prev) => ({
-//         ...prev,
-//         lastName: "hooson bj bolohgui",
-//       }));
-//     } else {
-//       setFormError((prev) => ({
-//         ...prev,
-//         lastName: "",
-//       }));
-//     }
-//     if (formData.userName === "") {
-//       setFormError((prev) => ({
-//         ...prev,
-//         userName: "hooson bj bolohgui",
-//       }));
-//     } else {
-//       setFormError((prev) => ({
-//         ...prev,
-//         userName: "",
-//       }));
-//     }
-//     console.log("hi");
-//   };
+  const handleNext = () => {
+    setStep(step + 1);
+  };
 
-//   return (
-//     <div>
-//       <Input
-//         name="firstName"
-//         label="First name"
-//         placeholder="Нэрээ оруулна уу?"
-//         value={formData.firstName}
-//         onChange={onChange}
-//         error={formError.firstName}
-//         require={false}
-//       />
-//       <Input
-//         name="lastName"
-//         label="Last name"
-//         placeholder="Овогоо оруулна уу?"
-//         value={formData.lastName}
-//         onChange={onChange}
-//         error={formError.lastName}
-//         require={false}
-//       />
-//       <Input
-//         name="userName"
-//         label="User name"
-//         placeholder="Хэрэглэгчийн нэрээ оруулна уу?"
-//         value={formData.userName}
-//         onChange={onChange}
-//         error={formError.userName}
-//         require={false}
-//       />
-//       <button onClick={onSubmit}>Continue</button>
-//     </div>
-//   );
-// };
+  const handlePrev = () => {
+    setStep(step - 1);
+  };
+
+  return (
+    <div className="bg-[#f4f4f4] h-screen">
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-100 h-150 bg-white rounded-sm">
+          <img className="w-10 h-10 mt-8 ml-8" src="/logo.png" alt="logo" />
+          <h1 className="font-bold ml-8 mt-4">Join Us! 😎</h1>
+          <p className="text-sm ml-8 text-[#8e8e8e]">
+            Please provide all current information accurately.
+          </p>
+          <div>
+            {step === 1 && (
+              <FormUserInfo
+                formData={formData}
+                onChange={onChange}
+                formError={formError}
+                updateFormError={updateFormError}
+                handleNext={handleNext}
+                handlePrev={handlePrev}
+              />
+            )}
+            {step === 2 && (
+              <FormEmailPassport
+                formData={formData}
+                onChange={onChange}
+                formError={formError}
+                updateFormError={updateFormError}
+                handlePrev={handlePrev}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // import { useState } from "react";
 // import { Continue } from "./Continue";
@@ -174,38 +161,46 @@ import { useState } from "react";
 //     </div>
 //   )
 // }
-export const Form = () => {
-  const [input, setInput] = useState("");
-  const [items, setItems] = useState([]);
+// export const Form = () => {
+//   const [input, setInput] = useState("");
+//   const [items, setItems] = useState([]);
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     userName: "",
+//   });
 
-  const onChange = (e) => {
-    setInput(e.target.value);
-    console.log(e.target.value);
-  };
+//   const onChange = (e) => {
+//     const name = e.target.name;
+//     const value = e.target.value;
+//     setInput(e.target.value);
+//     console.log(e.target.value);
+//   };
 
-  const add = () => {
-    setItems([...items, input]);
-  };
-  console.log(add);
-  return (
-    <div>
-      <div>
-        <input
-          onChange={(e) => {
-            onChange(e);
-          }}
-          value={input}
-          type="text"
-          className="border"
-        />
-        <button onClick={add}>Submit</button>
-        <p>Tanii bichsen text</p>{" "}
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
+//   const add = () => {
+//     setItems([...items, input]);
+//     setInput("");
+//   };
+//   console.log(add);
+//   return (
+//     <div>
+//       <div>
+//         <input
+//           onChange={(e) => {
+//             onChange(e);
+//           }}
+//           value={input}
+//           type="text"
+//           className="border"
+//         />
+//         <button onClick={add}>Submit</button>
+//         <p>Tanii bichsen text</p>{" "}
+//         <ul>
+//           {items.map((item, index) => (
+//             <li key={index}>{item}</li>
+//           ))}
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// };

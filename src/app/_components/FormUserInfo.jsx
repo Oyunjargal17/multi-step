@@ -1,6 +1,42 @@
 const { Input } = require("./Input");
 
-const FormUserInfo = ({ formData, onChange, onSubmit }) => {
+export const FormUserInfo = ({
+  formData,
+  onChange,
+  formError,
+  updateFormError,
+  handleNext,
+}) => {
+  const onValidation = () => {
+    const { firstName, lastName, userName } = formData;
+    const newError = {};
+
+    if (firstName === "") {
+      newError["firstName"] = "хоосон утга оруулахгүй байх";
+    }
+
+    if (lastName === "") {
+      newError["lastName"] = "хоосон утга оруулахгүй байх";
+    }
+    if (userName === "") {
+      newError["userName"] = "хоосон утга оруулахгүй байх";
+    }
+
+    const isValid = Object.keys(newError).length === 0;
+
+    updateFormError(newError);
+
+    return isValid;
+  };
+
+  const onSubmit = () => {
+    const isValid = onValidation();
+
+    if (isValid) {
+      handleNext();
+    }
+  };
+
   return (
     <div>
       <Input
@@ -30,7 +66,14 @@ const FormUserInfo = ({ formData, onChange, onSubmit }) => {
         error={formError.userName}
         require={false}
       />
-      <button onClick={onSubmit}>Continue</button>
+      <div className="flex justify-center ">
+        <button
+          onClick={onSubmit}
+          className="bg-[#121315] text-white w-80 rounded-sm mt-21 p-1"
+        >
+          Continue 1/3
+        </button>
+      </div>
     </div>
   );
 };
