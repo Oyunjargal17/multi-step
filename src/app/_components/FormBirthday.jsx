@@ -1,3 +1,6 @@
+import { InputDate } from "./InputDate";
+import { InputPicture } from "./InputPicture";
+
 const { Input } = require("./Input");
 
 export const FormBirthday = ({
@@ -30,14 +33,15 @@ export const FormBirthday = ({
   const onSubmit = () => {
     const isValid = onValidation();
 
-    // if (isValid) {
-    //   handleNext();
-    // }
+    if (isValid) {
+      handleNext();
+    }
+    console.log(handleNext);
   };
 
   return (
     <div>
-      <Input
+      <InputDate
         name="dateOfBirthday"
         label="Date of birth"
         placeholder="Ognoogoo оруулна уу?"
@@ -46,7 +50,8 @@ export const FormBirthday = ({
         error={formError.dateOfBirthday}
         require={false}
       />
-      <Input
+
+      <InputPicture
         name="profileImage"
         label="Profile image"
         placeholder="Zuragaa оруулна уу?"
@@ -56,16 +61,16 @@ export const FormBirthday = ({
         require={false}
       />
 
-      <div className="flex justify-center ">
+      <div className="flex justify-center gap-4 mb-4 ">
         <button
           onClick={handlePrev}
-          className="bg-[#121315] text-white rounded-sm mt-21 p-1"
+          className="bg-white border text-black w-20 rounded-sm mt-21 p-1"
         >
           back
         </button>
         <button
           onClick={onSubmit}
-          className="bg-[#121315] text-white w-80 rounded-sm mt-21 p-1"
+          className="bg-[#121315] text-white w-54 rounded-sm mt-21 p-1"
         >
           Continue 3/3
         </button>

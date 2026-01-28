@@ -66,7 +66,7 @@ export const FormUserInfo = ({
         error={formError.userName}
         require={false}
       />
-      <div className="flex justify-center ">
+      <div className="flex justify-center mb-4 ">
         <button
           onClick={onSubmit}
           className="bg-[#121315] text-white w-80 rounded-sm mt-21 p-1"
