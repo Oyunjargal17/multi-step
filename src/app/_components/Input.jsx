@@ -1,13 +1,5 @@
 export const Input = (props) => {
-  const {
-    type = "text",
-    value,
-    placeholder,
-    onChange,
-    name,
-    label,
-    error,
-  } = props;
+  const { type, value, placeholder, onChange, name, label, error } = props;
   console.log(error);
 
   return (

@@ -62,6 +62,7 @@ export const FormEmailPassport = ({
         onChange={onChange}
         error={formError.eMail}
         require={false}
+        type="text"
       />
       <Input
         name="phoneNumber"
@@ -71,6 +72,7 @@ export const FormEmailPassport = ({
         onChange={onChange}
         error={formError.phoneNumber}
         require={false}
+        type="text"
       />
       <Input
         name="password"
@@ -80,6 +82,7 @@ export const FormEmailPassport = ({
         onChange={onChange}
         error={formError.password}
         require={false}
+        type="password"
       />
       <Input
         name="confirmPassword"
@@ -89,6 +92,7 @@ export const FormEmailPassport = ({
         onChange={onChange}
         error={formError.confirmPassword}
         require={false}
+        type="password"
       />
 
       <div className="flex justify-center gap-4 mb-4  ">

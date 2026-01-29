@@ -47,6 +47,7 @@ export const FormUserInfo = ({
         onChange={onChange}
         error={formError.firstName}
         require={false}
+        type="text"
       />
       <Input
         name="lastName"
@@ -56,6 +57,7 @@ export const FormUserInfo = ({
         onChange={onChange}
         error={formError.lastName}
         require={false}
+        type="text"
       />
       <Input
         name="userName"
@@ -65,6 +67,7 @@ export const FormUserInfo = ({
         onChange={onChange}
         error={formError.userName}
         require={false}
+        type="text"
       />
       <div className="flex justify-center mb-4 ">
         <button

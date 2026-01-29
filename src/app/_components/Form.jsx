@@ -1,15 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { FormUserInfo } from "./FormUserInfo";
 import { FormEmailPassport } from "./FormEmailPassport";
 import { FormBirthday } from "./FormBirthday";
 import { Success } from "./Success";
 import { UI } from "./UI";
+import { differenceInYears } from "date-fns";
+
+const today = new Date();
 
 export const Form = () => {
-  const [step, setStep] = useState(1);
+  const ref = useRef();
+  const [step, setStep] = useState(3);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,6 +26,11 @@ export const Form = () => {
     dateOfBirthday: "",
     profileImage: "",
   });
+  const difference = differenceInYears(today, formData.dateOfBirthday);
+  console.log("difference :", difference);
+
+  console.log("formData", formData);
+  const [image, setImage] = useState(null);
 
   const [formError, setFormError] = useState({
     firstName: "",
@@ -37,7 +46,15 @@ export const Form = () => {
 
   const onChange = (event) => {
     const { name, value } = event.target;
+    console.log("name: ", name);
 
+    if (name === "profileImage") {
+      const file = ref.current.files[0];
+      if (file && file.type.startsWith("image/")) {
+        const previewUrl = URL.createObjectURL(file);
+        setImage(previewUrl);
+      }
+    }
     const newFormData = { ...formData, [name]: value };
     setFormData(newFormData);
     updateFormError({ [name]: "" });
@@ -98,6 +115,9 @@ export const Form = () => {
                   updateFormError={updateFormError}
                   handlePrev={handlePrev}
                   handleNext={handleNext}
+                  ref={ref}
+                  image={image}
+                  difference={difference}
                 />
               </>
             )}

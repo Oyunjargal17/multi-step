@@ -10,6 +10,9 @@ export const FormBirthday = ({
   updateFormError,
   handleNext,
   handlePrev,
+  ref,
+  image,
+  difference,
 }) => {
   const onValidation = () => {
     const { dateOfBirthday, profileImage } = formData;
@@ -17,6 +20,8 @@ export const FormBirthday = ({
 
     if (dateOfBirthday === "") {
       newError["dateOfBirthday"] = "хоосон утга оруулахгүй байх";
+    } else if (difference <= 18) {
+      newError["dateOfBirthday"] = "18 nas hursen bh ystoi";
     }
 
     if (profileImage === "") {
@@ -59,6 +64,8 @@ export const FormBirthday = ({
         onChange={onChange}
         error={formError.profileImage}
         require={false}
+        ref={ref}
+        image={image}
       />
 
       <div className="flex justify-center gap-4 mb-4 ">
