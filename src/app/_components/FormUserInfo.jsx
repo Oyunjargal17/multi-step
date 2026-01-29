@@ -12,14 +12,14 @@ export const FormUserInfo = ({
     const newError = {};
 
     if (firstName === "") {
-      newError["firstName"] = "хоосон утга оруулахгүй байх";
+      newError["firstName"] = "Хоосон утга оруулахгүй байх";
     }
 
     if (lastName === "") {
-      newError["lastName"] = "хоосон утга оруулахгүй байх";
+      newError["lastName"] = "Хоосон утга оруулахгүй байх";
     }
     if (userName === "") {
-      newError["userName"] = "хоосон утга оруулахгүй байх";
+      newError["userName"] = "Хоосон утга оруулахгүй байх";
     }
 
     const isValid = Object.keys(newError).length === 0;

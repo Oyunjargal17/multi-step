@@ -13,6 +13,7 @@ export const FormBirthday = ({
   ref,
   image,
   difference,
+  setImage,
 }) => {
   const onValidation = () => {
     const { dateOfBirthday, profileImage } = formData;
@@ -66,6 +67,7 @@ export const FormBirthday = ({
         require={false}
         ref={ref}
         image={image}
+        setImage={setImage}
       />
 
       <div className="flex justify-center gap-4 mb-4 ">

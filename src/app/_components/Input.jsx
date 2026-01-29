@@ -9,7 +9,7 @@ export const Input = (props) => {
         <p className="text-red-700">*</p>
       </div>
       <input
-        className="border border-[#ced7e1] rounded-sm p-2 mt-1 w-80"
+        className={`border  rounded-sm p-2 mt-1 w-80 ${error === "" ? "border-[#ced7e1]" : "border-[#E14942]"}`}
         type={type}
         placeholder={placeholder}
         value={value}
