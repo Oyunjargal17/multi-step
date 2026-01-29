@@ -17,25 +17,25 @@ export const FormEmailPassport = ({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (eMail === "") {
-      newError["eMail"] = "hooson bj bolohgui";
+      newError["eMail"] = "Хоосон байж болохгүй";
     } else if (!eMailRegex.test(eMail)) {
-      newError["eMail"] = "e-Mail taarahgui bna";
+      newError["eMail"] = "Алдаатай И-мэйл байна";
     }
 
     if (phoneNumber === "") {
-      newError["phoneNumber"] = "hooson bj bolohgui";
+      newError["phoneNumber"] = "Хоосон байж болохгүй";
     } else if (!phoneRegex.test(phoneNumber)) {
-      newError["phoneNumber"] = "utasnii dugaar buruu bna";
+      newError["phoneNumber"] = "Утасны дугаар буруу байна";
     }
     if (password === "") {
-      newError["password"] = "hooson bj bolohgui";
+      newError["password"] = "Хоосон байж болохгүй";
     } else if (!passwordRegex.test(password)) {
-      newError["password"] = "password taarahgui bna";
+      newError["password"] = "Нууц үгийн шаардлага хангахгүй байна";
     }
     if (confirmPassword === "") {
-      newError["confirmPassword"] = "hooson bj bolohgui";
+      newError["confirmPassword"] = "Хоосон байж болохгүй";
     } else if (password !== confirmPassword) {
-      newError["confirmPassword"] = "batatgal taarahgui bna";
+      newError["confirmPassword"] = "Нууц үг тохирохгүй байна";
     }
     console.log(handleNext);
     const isValid = Object.keys(newError).length === 0;
@@ -57,7 +57,7 @@ export const FormEmailPassport = ({
       <Input
         name="eMail"
         label="Email"
-        placeholder="e-mail оруулна уу?"
+        placeholder="И-мэйлээ оруулна уу?"
         value={formData.eMail}
         onChange={onChange}
         error={formError.eMail}
@@ -67,7 +67,7 @@ export const FormEmailPassport = ({
       <Input
         name="phoneNumber"
         label="Phone number"
-        placeholder="Utasnii dugaaraa оруулна уу?"
+        placeholder="Утасны дугаараа оруулна уу?"
         value={formData.phoneNumber}
         onChange={onChange}
         error={formError.phoneNumber}
@@ -77,7 +77,7 @@ export const FormEmailPassport = ({
       <Input
         name="password"
         label="Password"
-        placeholder="passwordoo оруулна уу?"
+        placeholder="Нууц үгээ оруулна уу?"
         value={formData.password}
         onChange={onChange}
         error={formError.password}
@@ -87,7 +87,7 @@ export const FormEmailPassport = ({
       <Input
         name="confirmPassword"
         label="Confirt password"
-        placeholder="passwordoo batatgana уу?"
+        placeholder="Нууц үгээ бататгана уу?"
         value={formData.confirmPassword}
         onChange={onChange}
         error={formError.confirmPassword}

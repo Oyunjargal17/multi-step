@@ -13,7 +13,7 @@ const today = new Date();
 
 export const Form = () => {
   const ref = useRef();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
     firstName: "",

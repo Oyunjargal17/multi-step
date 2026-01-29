@@ -18,9 +18,9 @@ export const InputPicture = (props) => {
         <label className="">{label}</label>
         <p className="text-red-700">*</p>
       </div>
-      <div className="flex relative border border-[#ced7e1] rounded-sm w-80 h-50">
+      <div className=" relative border border-[#ced7e1] rounded-sm w-80 h-50">
         <input
-          className="cursor-pointer w-full h-full opacity-0"
+          className="absolute  inset-0 cursor-pointer w-full h-full opacity-0 z-10"
           type={type}
           placeholder={placeholder}
           value={value}
@@ -28,15 +28,19 @@ export const InputPicture = (props) => {
           onChange={onChange}
           ref={ref}
         />
-        <div className="flex justify-center items-center absolute">
+        <div className="flex flex-col justify-center items-center w-full h-full">
           <img
-            className="w-20 h-20 text-center"
+            className="w-15 h-15 text-center"
             src="./addImage.svg"
             alt="addImage"
           />
+          <p className="text-center text-sm">Add image</p>
         </div>
         {image && (
-          <img className="absolute rounded-sm w-full h-full" src={image} />
+          <img
+            className="absolute inset-0 object-cover z-0 rounded-sm w-full h-full"
+            src={image}
+          />
         )}
       </div>
       <p className="text-red-500 text-xs">{error}</p>

@@ -19,13 +19,13 @@ export const FormBirthday = ({
     const newError = {};
 
     if (dateOfBirthday === "") {
-      newError["dateOfBirthday"] = "хоосон утга оруулахгүй байх";
+      newError["dateOfBirthday"] = "Хоосон утга оруулахгүй байх";
     } else if (difference <= 18) {
-      newError["dateOfBirthday"] = "18 nas hursen bh ystoi";
+      newError["dateOfBirthday"] = "Та 18 нас хүрсэн байх ёстой!";
     }
 
     if (profileImage === "") {
-      newError["profileImage"] = "хоосон утга оруулахгүй байх";
+      newError["profileImage"] = "Та заавал зурагаа оруулна уу?";
     }
 
     const isValid = Object.keys(newError).length === 0;
@@ -49,7 +49,7 @@ export const FormBirthday = ({
       <InputDate
         name="dateOfBirthday"
         label="Date of birth"
-        placeholder="Ognoogoo оруулна уу?"
+        placeholder="Төрсөн он, сар, өдөрөө оруулна уу?"
         value={formData.dateOfBirthday}
         onChange={onChange}
         error={formError.dateOfBirthday}
@@ -59,7 +59,7 @@ export const FormBirthday = ({
       <InputPicture
         name="profileImage"
         label="Profile image"
-        placeholder="Zuragaa оруулна уу?"
+        placeholder="Та өөрийн зурагаа оруулна уу?"
         value={formData.profileImage}
         onChange={onChange}
         error={formError.profileImage}
