@@ -14,6 +14,7 @@ const today = new Date();
 export const Form = () => {
   const ref = useRef();
   const [step, setStep] = useState(3);
+  const [image, setImage] = useState(null);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -29,8 +30,15 @@ export const Form = () => {
   const difference = differenceInYears(today, formData.dateOfBirthday);
   console.log("difference :", difference);
 
+ 
+
+  const uploadFile= () =>
+  {
+    setImage(ref.current.files[0])
+    
+  }
   console.log("formData", formData);
-  const [image, setImage] = useState(null);
+  
   console.log(setImage);
 
   const [formError, setFormError] = useState({
@@ -125,6 +133,7 @@ export const Form = () => {
                   image={image}
                   difference={difference}
                   setImage={setImage}
+                  uploadFile={uploadFile}
                
                 />
               </>

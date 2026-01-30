@@ -9,6 +9,7 @@ export const InputPicture = (props) => {
     error,
     ref,
     image,
+    uploadFile,
 
   } = props;
   console.log(error);
@@ -28,6 +29,7 @@ export const InputPicture = (props) => {
           name={name}
           onChange={onChange}
           ref={ref}
+          onClick={uploadFile}
         />
         {!image && (
           <div className="flex flex-col justify-center items-center w-full h-full">
